@@ -1,4 +1,4 @@
-package com.json.dondeligia.ui.theme
+package com.json.dondeligia.presentation.views.ui.theme
 
 import android.app.Activity
 import android.os.Build
