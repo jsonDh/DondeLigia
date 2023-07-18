@@ -1,4 +1,4 @@
-package com.json.dondeligia.ui.theme
+package com.json.dondeligia.presentation.views.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

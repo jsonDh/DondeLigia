@@ -1,4 +1,4 @@
-package com.json.dondeligia
+package com.json.dondeligia.presentation.views.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -21,7 +21,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.json.dondeligia.ui.theme.DondeLigiaTheme
+import com.json.dondeligia.R
+import com.json.dondeligia.presentation.views.components.AboutMe
+import com.json.dondeligia.presentation.views.components.CatalogsList
+import com.json.dondeligia.presentation.views.components.PromotionsList
+import com.json.dondeligia.presentation.views.ui.theme.DondeLigiaTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,27 +82,11 @@ fun Tabs() {
             }
         }
         when (state) {
-            0 -> Catalogs()
-            1 -> Promotions()
+            0 -> CatalogsList()
+            1 -> PromotionsList()
             2 -> AboutMe()
         }
     }
-}
-
-
-@Composable
-fun Catalogs() {
-    Text(text = "Catálogos")
-}
-
-@Composable
-fun Promotions() {
-    Text(text = "Promociones")
-}
-
-@Composable
-fun AboutMe() {
-    Text(text = "Acerca de Mí")
 }
 
 @Preview(showBackground = true, showSystemUi = true)
