@@ -2,17 +2,21 @@ package com.json.dondeligia.presentation.views.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -44,6 +48,16 @@ fun CatalogsList(catalogsListViewModel: CatalogsListViewModel) {
     }
     val catalogsListState by catalogsListViewModel.catalogsList.collectAsState()
     when (catalogsListState) {
+        is CatalogsListState.Loading -> {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                ShowLoading()
+            }
+        }
+
         is CatalogsListState.Success -> {
             val brands = (catalogsListState as CatalogsListState.Success).data
             LazyColumn(
@@ -103,5 +117,12 @@ fun CatalogBrand(brand: Brand) {
         modifier = Modifier
             .padding(100.dp, 0.dp, 10.dp, 0.dp)
             .alpha(0.3f)
+    )
+}
+
+@Composable
+fun ShowLoading() {
+    CircularProgressIndicator(
+        color = MaterialTheme.colorScheme.primary
     )
 }
