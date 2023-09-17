@@ -1,6 +1,9 @@
 package com.json.dondeligia.presentation.views.activities
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -52,6 +55,14 @@ class MainActivity : ComponentActivity() {
             DondeLigiaTheme {
                 MainScreen()
             }
+        }
+        //askForPermission()
+    }
+
+    private fun askForPermission(){
+        if (!Settings.canDrawOverlays(this)){
+            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))
+            startActivity(intent)
         }
     }
 
